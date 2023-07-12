@@ -1,12 +1,13 @@
 import http from 'node:http'
 import { json } from './middlewares/json.js'
 import { Database } from './database.js'
+import { randomUUID } from 'node:crypto'
 
 const database = new Database
 
 const server = http.createServer(async(req, res) => {
   const { method, url } = req
-
+ 
   await json(req, res)
 
   if (method === 'GET' && url === '/users') {
@@ -19,7 +20,7 @@ const server = http.createServer(async(req, res) => {
     const { name, email } = req.body
 
     const user = {
-      id: 1,
+      id: randomUUID(),
       name,
       email,
     }
