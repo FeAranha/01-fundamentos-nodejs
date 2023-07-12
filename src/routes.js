@@ -13,7 +13,7 @@ export const routes = [
       return res.end(JSON.stringify(users))
     }
   },
- {
+  {
     method: 'POST',
     path: '/users',
     handler: (req, res) => {
@@ -29,5 +29,12 @@ export const routes = [
     
     return res.writeHead(201).end()
     }
+  },
+  {
+    method: 'DELETE',
+    path: '/users/ID',
+    handler: (req, res) => {
+      return res.end()
+    },
   }
 ]
